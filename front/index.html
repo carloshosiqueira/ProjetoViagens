@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Opções</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadDestinos();loadHoteis();loadPt()">
+
+    <h2>Informações dos Pontos Turísticos</h2>
+    <button class="add" onclick="openModal('modalPt')">Adicionar Ponto Turístico</button>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:5%">ID</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th style="width:10%">Valor</th>
+                <th style="width:15%">Telefone p/ Reserva</th>
+                <th style="width:10%">Ações</th>
+            </tr>
+        </thead>
+        <tbody id="ptDados"></tbody>
+    </table>
+
+    <h2>Informações do Destino</h2>
+    <button class="add" onclick="openModal('modalDestino')">Adicionar Destino</button>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:5%;">ID</th>
+                <th style="width:50%">Estado</th>
+                <th>Valor Viagem</th>
+                <th>Data</th>
+                <th style="width:10%">Ações</th>
+            </tr>
+        </thead>
+        <tbody id="destinoDados"></tbody>
+    </table>
+
+    <h2>Informações do Hotel</h2>
+    <button class="add" onclick="openModal('modalHotel')">Adicionar Hotel</button>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:5%">ID</th>
+                <th>Hotel</th>
+                <th style="width:10%">Valor Hotel</th>
+                <th style="width:5%">Avaliação</th>
+                <th>Email</th>
+                <th>Site</th>
+                <th style="width:8%">Id Destino</th>
+                <th style="width:10%">Ações</th>
+            </tr>
+        </thead>
+        <tbody id="hotelDados"></tbody>
+    </table>
+
+    <!-- Modal de criação de Pontos Turísticos -->
+    <div id="modalPt" class="modal">
+        <div class="modal-content">
+            <div class="headerModal">
+                <span class="close" onclick="closeModal('modalPt')">&times;</span>
+                <h2>Criar Novo Ponto Turístico</h2>
+            </div>
+            <input type="text" id="ptNome" placeholder="Nome do Ponto Turístico" required>
+            <input type="text" id="ptEndereco" placeholder="Endereço do Ponto Turístico" required>
+            <input type="text" id="ptTelefone" placeholder="Telefone Para Reserva" required>
+            <input type="number" id="ptValor" placeholder="Valor do Ponto Turístico" required>
+            <input type="number" id="ptDestino" placeholder="Estado do ponto Turístico (O ID)" required>
+            <button onclick="createPt()">Criar Ponto Turístico</button>
+        </div>
+    </div>
+
+    <!-- Modal de criação de Destinos -->
+    <div id="modalDestino" class="modal">
+        <div class="modal-content">
+            <div class="headerModal">
+                <span class="close" onclick="closeModal('modalDestino')">&times;</span>
+                <h2>Criar Novo Destino</h2>
+            </div>
+            <input type="text" id="destinoNome" placeholder="Nome do Destino" required>
+            <input type="number" id="destinoValor" placeholder="Valor do Destino" required>
+            <input type="date" id="destinoData" required>
+            <button onclick="createDestino()">Criar Destino</button>
+        </div>
+    </div>
+
+    <!-- Modal de criação de Hotéis -->
+    <div id="modalHotel" class="modal">
+        <div class="modal-content">
+            <div class="headerModal">
+                <span class="close" onclick="closeModal('modalHotel')">&times;</span>
+                <h2>Criar Novo Hotel</h2>
+            </div>
+            <input type="text" id="hotelNome" placeholder="Nome do Hotel" required>
+            <input type="number" id="hotelAvaliacao" placeholder="Avaliação do Hotel" required min="0" max="5" step="0.1">
+            <input type="text" id="email" placeholder="Email do Hotel">
+            <input type="text" id="site" placeholder="Site do Hotel">
+            <input type="number" id="hotelValor" placeholder="Valor do Hotel" required>
+            <input type="number" id="destinoId" placeholder="Id do Destino" required>
+            <button onclick="createHotel()">Criar Hotel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
